@@ -1,7 +1,6 @@
 <template>
 	<div>
-		<mt-cell title="标题文字" value="说明文字  "></mt-cell>
-
+		<mt-cell @click='load()' title="标题文字" value="说明文字  "></mt-cell>
 		<mt-cell-swipe
 			title="向左滑动"
 			:right="[
@@ -26,14 +25,26 @@
 		  cancel-text="取消"
 		  placeholder="搜索" fixed>
 		</mt-search>
+		<mt-button type="default">default</mt-button>
+		<mt-button type="primary">primary</mt-button>
+		<mt-button type="danger">danger</mt-button>
 	</div>
 </template>
 <script>
+console.log("other")
 	export default{
 		data(){
 			return {
 				value:'裙子'
 			}
+		},
+		methods(){
+			return{
+				load(){
+					alert(123)
+				}
+			}
+
 		}
 	}
 </script>

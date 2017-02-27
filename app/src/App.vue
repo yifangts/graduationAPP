@@ -4,19 +4,19 @@
     <router-view></router-view>
     <mt-tabbar v-model="selected">
     <!-- 底部导航 -->
-        
+
         <mt-tab-item id="首页">
-          <router-link to="/home">
+          <router-link to="/index">
             <img slot="icon" src="./assets/logo.png">
               首页
-          </router-link>       
+          </router-link>
         </mt-tab-item>
-               
+
         <mt-tab-item id="动物">
           <router-link to="/other">
             <img slot="icon" src="./assets/logo.png">
                           动物
-          </router-link>                  
+          </router-link>
         </mt-tab-item>
        
         <mt-tab-item id="植物">
@@ -27,7 +27,7 @@
         </mt-tab-item>
               
         <mt-tab-item id="人类">
-          <router-link to="/other2">
+          <router-link to="/home">
             <img slot="icon" src="./assets/logo.png">
             人类
             </router-link>
@@ -62,6 +62,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
