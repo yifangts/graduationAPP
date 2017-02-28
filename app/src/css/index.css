@@ -1,0 +1,31 @@
+.page-swipe .mint-swipe {
+    height: 150px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    /*margin-bottom: 20px;*/
+}
+.page-swipe .mint-swipe-item {
+    line-height: 150px;
+}
+/*.page-swipe .slide1 {*/
+    /*background-color: lightgreen;*/
+    /*color: #fff;*/
+/*}*/
+/*.page-swipe .slide2 {*/
+    /*background-color: #ffd705;*/
+    /*color: #000;*/
+/*}*/
+/*.page-swipe .slide3 {*/
+    /*background-color: #ff2d4b;*/
+    /*color: #fff;*/
+/*}*/
+.page-swipe-desc {
+    text-align: center;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.my-btn-box{
+    margin-top:50px;
+}
