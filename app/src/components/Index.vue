@@ -7,7 +7,7 @@
 				<mt-swipe-item :class="{slide3:true}"><img src="../images/human1.jpg" alt=""></mt-swipe-item>
 			</mt-swipe>
 		</div>
-        <router-view>
+        <router-view :newClick="newClick">
 
         </router-view>
         <div class="page js_show">
@@ -60,6 +60,10 @@
 			return {
 
 			}
-		}
+		},
+        props:["newClick"],
+        methods:{
+
+        }
 	}
 </script>

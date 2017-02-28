@@ -1,40 +1,40 @@
 <template>
   <div id="app">
     <mt-header title="虚拟生物实验室" fixed>
-        <router-link to="/" slot="left" v-if=isNeedRe :newClick="isNeedRe">
+        <router-link to="/" slot="left" v-if=isNeedRe.flag>
             <mt-button icon="back">返回</mt-button>
         </router-link>
     </mt-header>
       <div class="indexRouterTop"></div>
-    <router-view id="index">
+    <router-view :newClick="isNeedRe">
 
     </router-view>
 
       <div class="indexRouterBottom"></div>
     <mt-tabbar v-model="selected" fixed>
     <!-- 底部导航 -->
-        <router-link name="index" to="/index">
+        <router-link to="/index">
             <mt-tab-item id="首页">
                 <img slot="icon" src="./images/27.gif">
                   首页
             </mt-tab-item>
         </router-link>
 
-        <router-link name="index" to="/animal">
+        <router-link to="/animal">
             <mt-tab-item id="动物">
                 <img slot="icon" src="./images/7.gif">
                               动物
             </mt-tab-item>
         </router-link>
 
-        <router-link name="index" to="/plant">
+        <router-link to="/plant">
             <mt-tab-item id="植物" >
                     <img slot="icon" src="./images/25.gif">
                     植物
             </mt-tab-item>
         </router-link>
 
-        <router-link name="index" to="/human">
+        <router-link to="/human">
             <mt-tab-item id="人类">
                 <img slot="icon" src="./images/23.gif">
                 人类
@@ -45,12 +45,13 @@
 </template>
 
 <script>
+
 export default {
   name: 'app',
   data () {
     return {
-        isNeedRe:false,
-      selected:"0"
+        isNeedRe:{flag:false},
+        selected:"0"
     }
   },
     methods:{

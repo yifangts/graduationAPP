@@ -25,13 +25,12 @@
 		  cancel-text="取消"
 		  placeholder="搜索" fixed>
 		</mt-search>
-		<mt-button type="default">default</mt-button>
-		<mt-button type="primary">primary</mt-button>
-		<mt-button type="danger">danger</mt-button>
+		<btn type="default">default</btn>
+		<btn type="primary">primary</btn>
+		<btn type="danger">danger</btn>
 	</div>
 </template>
 <script>
-console.log("other")
 	export default{
 		data(){
 			return {
