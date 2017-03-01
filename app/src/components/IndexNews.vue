@@ -1,6 +1,8 @@
 <template>
     <div>
         <p>{{msg}}</p>
+        <br>
+        {{$route.path}}
     </div>
 </template>
 <style>
@@ -8,12 +10,15 @@
 </style>
 <script>
     export default{
-        name:"indexNews2",
+        name:"indexNews1",
         data(){
             return{
-                msg:'这是新闻二',
-                isNeedRe:true
+                msg:'这是新闻'
             }
+        },
+        props:["newClick"],
+        methods:{
+
         }
 //        components:{
 //            'other-component':OtherComponent,

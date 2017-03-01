@@ -21,7 +21,7 @@ var vm=new Vue({
 	router,
   	el: '#app',
     data:{
-        isNeedRe:false
+        land:""
     },
     methods:{
 
