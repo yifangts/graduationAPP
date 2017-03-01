@@ -3,7 +3,7 @@
         <router-link v-for="item in indexNews" :to=item.href >
             <div class="media-box media-box_appmsg" @click="change(item.newsTitle)">
                 <div class="media-box__hd">
-                    <img class="media-box__thumb" :src="item.imgSrc" alt="">
+                    <img class="media-box__thumb" v-lazy="item.imgSrc" alt="">
                 </div>
                 <div class="media-box__bd">
                     <h4 class="media-box__title">{{item.newsTitle}}</h4>

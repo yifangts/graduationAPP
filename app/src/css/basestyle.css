@@ -163,3 +163,8 @@ html {overflow-y: scroll;}
     color: #586C94;
     font-size: 14px;
 }
+image[lazy=loading] {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+}
