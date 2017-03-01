@@ -11,175 +11,175 @@
                 huaExperiments:[
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper1.jpg",
                         newsTitle:"练习使用显微镜",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper2.jpg",
                         newsTitle:"观察人的口腔上皮细胞",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper3.jpg",
                         newsTitle:"观察人体的基本组织",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper4.jpg",
                         newsTitle:"晚育的意义",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper5.jpg",
                         newsTitle:"测定某种食物中的能量",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper6.jpg",
                         newsTitle:"馒头在口腔中的变化",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper7.jpg",
                         newsTitle:"测量胸围差",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper8.jpg",
                         newsTitle:"采集和测算空气中的尘埃粒子",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper9.jpg",
                         newsTitle:"用显微镜观察人血的永久涂片",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper10.jpg",
                         newsTitle:"膝跳反射",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper11.jpg",
                         newsTitle:"测定反应速度",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper12.jpg",
                         newsTitle:"酸雨对生物的影响",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper13.jpg",
                         newsTitle:"废电池对生物的影响",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper14.jpg",
                         newsTitle:"胆汁的作用",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper15.jpg",
                         newsTitle:"模拟膈肌的运动",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper16.jpg",
                         newsTitle:"检测不同坏境中的细菌和真菌",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper17.jpg",
                         newsTitle:"观察运动系统的组成",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper18.jpg",
                         newsTitle:"肌肉牵引骨运动的模型",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper19.jpg",
                         newsTitle:"使用高倍显微镜观察几种细胞",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper20.jpg",
                         newsTitle:"检测生物组织中的糖类、脂肪和蛋白质",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper21.jpg",
                         newsTitle:"观察DNA和RNA在细胞中的分布",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper22.jpg",
                         newsTitle:"体验制备细胞膜的方法",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper23.jpg",
                         newsTitle:"比较过氧化氢在不同条件下的分解",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper24.jpg",
                         newsTitle:"影响酶活性的条件",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper25.jpg",
                         newsTitle:"细胞大小与物质运输的关系",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper26.jpg",
                         newsTitle:"性状分离的模拟",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news1",
-                        imgSrc:"/src/images/animal2.jpg",
+                        imgSrc:"/src/images/human/exper27.jpg",
                         newsTitle:"生物体维持PH稳定的机制",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news2",
-                        imgSrc:"/src/images/plant2.jpg",
+                        imgSrc:"/src/images/human/exper28.jpg",
                         newsTitle:"培养液中酵母菌种群数量的变化",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
                     {
                         href:"/index/news3",
-                        imgSrc:"/src/images/human2.jpg",
+                        imgSrc:"/src/images/human/exper29.jpg",
                         newsTitle:"设计并制作生态缸,观察其稳定性",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     }
