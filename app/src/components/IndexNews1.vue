@@ -8,10 +8,10 @@
 </style>
 <script>
     export default{
-        name:"news1",
+        name:"indexNews1",
         data(){
             return{
-                msg:'hello vue',
+                msg:'这是新闻一',
                 isNeedRe:true
             }
         },

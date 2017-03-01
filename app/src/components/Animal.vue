@@ -1,49 +1,108 @@
 <template>
 	<div>
-		<mt-cell @click='load()' title="标题文字" value="说明文字  "></mt-cell>
-		<mt-cell-swipe
-			title="向左滑动"
-			:right="[
-			{
-			  content: '删除',
-			  style: { background: 'red', color: '#fff' },
-			  handler: () => this.$messagebox('delete')
-			}
-		]"></mt-cell-swipe>
-
-			<!--加载动画-->
-		<mt-cell>
-			<mt-spinner type="snake" :size="14"></mt-spinner>
-		</mt-cell>
-		<mt-spinner type="double-bounce" color="red"></mt-spinner>
-		<mt-spinner type="triple-bounce" color="#f60"></mt-spinner>
-		<mt-spinner type="fading-circle" color="#399"></mt-spinner>
-
-		<!--搜索-->
-		<mt-search
-		  v-model="value"
-		  cancel-text="取消"
-		  placeholder="搜索" fixed>
-		</mt-search>
-		<btn type="default">default</btn>
-		<btn type="primary">primary</btn>
-		<btn type="danger">danger</btn>
+        <my-panel :newsPanel=aniExperiments :newClick=newClick></my-panel>
 	</div>
 </template>
 <script>
-	export default{
+
+    export default{
+	    name:"animal",
 		data(){
 			return {
-				value:'裙子'
+				value:'',
+                aniExperiments:[
+                    {
+                        href:"/index/news1",
+                        imgSrc:"/src/images/animal/exper1.jpg",
+                        newsTitle:"光对鼠妇生活的影响",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news2",
+                        imgSrc:"/src/images/animal/exper2.jpg",
+                        newsTitle:"观察草履虫",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news3",
+                        imgSrc:"/src/images/animal/exper3.jpg",
+                        newsTitle:"观察家畜小肠的内部结构",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news1",
+                        imgSrc:"/src/images/animal/exper4.jpg",
+                        newsTitle:"观察小鱼尾鳍内血液的流动",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news2",
+                        imgSrc:"/src/images/animal/exper5.jpg",
+                        newsTitle:"探究鱼鳍在游泳中的作用",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news3",
+                        imgSrc:"/src/images/animal/exper6.jpg",
+                        newsTitle:"饲养和观察蚯蚓",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news1",
+                        imgSrc:"/src/images/animal/exper7.jpg",
+                        newsTitle:"探究鸟适于飞行的特点",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news2",
+                        imgSrc:"/src/images/animal/exper8.jpg",
+                        newsTitle:"菜青虫的取食行为",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news3",
+                        imgSrc:"/src/images/animal/exper9.jpg",
+                        newsTitle:"探究动物的绕道取食行为",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news1",
+                        imgSrc:"/src/images/animal/exper10.jpg",
+                        newsTitle:"蚂蚁的通讯",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news2",
+                        imgSrc:"/src/images/animal/exper11.jpg",
+                        newsTitle:"观察鱼的呼吸",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news3",
+                        imgSrc:"/src/images/animal/exper12.jpg",
+                        newsTitle:"观察家兔",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news1",
+                        imgSrc:"/src/images/animal/exper13.jpg",
+                        newsTitle:"观察蝗虫精母细胞减数分裂固定装片",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news2",
+                        imgSrc:"/src/images/animal/exper14.jpg",
+                        newsTitle:"土壤中小动物类群丰富度的研究",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    }
+                ]
 			}
 		},
-		methods(){
-			return{
-				load(){
-					alert(123)
-				}
-			}
-
-		}
+		methods:{
+            load:function () {
+                alert(123)
+            }
+		},
+        props:["newClick"]
 	}
 </script>

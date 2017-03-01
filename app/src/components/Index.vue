@@ -11,39 +11,7 @@
 
         </router-view>
         <div class="page js_show">
-            <router-link to="/index/news1">
-                <div class="media-box media-box_appmsg">
-                    <div class="media-box__hd">
-                        <img class="media-box__thumb" src="../images/animal2.jpg" alt="">
-                    </div>
-                    <div class="media-box__bd">
-                        <h4 class="media-box__title">动物</h4>
-                        <p class="media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                    </div>
-                </div>
-            </router-link>
-            <router-link to="/index/news2">
-                <div class="media-box media-box_appmsg">
-                    <div class="media-box__hd">
-                        <img class="media-box__thumb" src="../images/plant2.jpg" alt="">
-                    </div>
-                    <div class="media-box__bd">
-                        <h4 class="media-box__title">植物</h4>
-                        <p class="media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                    </div>
-                </div>
-            </router-link>
-            <router-link to="/index/news3">
-                <div class="media-box media-box_appmsg">
-                    <div class="media-box__hd">
-                        <img class="media-box__thumb" src="../images/human2.jpg" alt="">
-                    </div>
-                    <div class="media-box__bd">
-                        <h4 class="media-box__title">人类</h4>
-                        <p class="media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                    </div>
-                </div>
-            </router-link>
+            <my-panel :newsPanel=indexNews :newClick=newClick></my-panel>
         </div>
 	</div>
 </template>
@@ -53,14 +21,35 @@
     }
 </style>
 <script>
-
 	export default{
 	    name:"index",
 		data(){
 			return {
-
+                indexNews:[
+                    {
+                        href:"/index/news1",
+                        imgSrc:"/src/images/animal2.jpg",
+                        newsTitle:"动物",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news2",
+                        imgSrc:"/src/images/plant2.jpg",
+                        newsTitle:"植物",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                    {
+                        href:"/index/news3",
+                        imgSrc:"/src/images/human2.jpg",
+                        newsTitle:"人类",
+                        newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                    },
+                ]
 			}
 		},
+//        components:{
+//            "my-panel":newsPanel
+//        },
         props:["newClick"],
         methods:{
 

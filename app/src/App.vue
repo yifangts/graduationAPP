@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <mt-header title="虚拟生物实验室" fixed>
-        <router-link to="/" slot="left" v-if=isNeedRe.flag>
-            <mt-button icon="back">返回</mt-button>
+    <mt-header :title="isNeedRe.count!=0?isNeedRe.title:title" fixed>
+        <router-link to="/" slot="left" v-show="isNeedRe.count!=0">
+            <mt-button icon="back" @click="isNeedRe.count--">返回</mt-button>
         </router-link>
     </mt-header>
       <div class="indexRouterTop"></div>
     <router-view :newClick="isNeedRe">
 
     </router-view>
-
       <div class="indexRouterBottom"></div>
     <mt-tabbar v-model="selected" fixed>
     <!-- 底部导航 -->
@@ -50,11 +49,16 @@ export default {
   name: 'app',
   data () {
     return {
-        isNeedRe:{flag:false},
-        selected:"0"
+        title:"虚拟生物实验室",
+        isNeedRe:{count:0,title:""},
+        selected:"0",
+
     }
   },
     methods:{
+
+    },
+    computed:{
 
     }
 }
