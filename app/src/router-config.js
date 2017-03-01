@@ -7,6 +7,7 @@ import AnimalExper from './components/AnimalExper.vue'
 import PlantExper from './components/PlantExper.vue'
 import HumanExper from './components/HumanExper.vue'
 
+
 export default {
     routes:[
 		{path:'/animal', component:Animal,
