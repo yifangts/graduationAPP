@@ -16,9 +16,11 @@
                 msg:'这是新闻'
             }
         },
-        props:["newClick"],
+        props:["panelClick"],
         methods:{
-
+            ccc(){
+                alert(1)
+            }
         }
 //        components:{
 //            'other-component':OtherComponent,

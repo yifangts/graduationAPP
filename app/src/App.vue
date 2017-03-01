@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <!--<mt-header :title="isNeedRe.count!=0?isNeedRe.title:title" fixed>-->
-        <!--<router-link to="/" slot="left" v-show="isNeedRe.count!=0">-->
-            <!--<mt-button icon="back" @click="isNeedRe.count&#45;&#45;;">返回</mt-button>-->
-        <!--</router-link>-->
-    <!--</mt-header>-->
       <div class="indexRouterTop"></div>
-    <router-view :panelClick="isNeedRe">
+    <router-view :panelClick="panelClick">
 
     </router-view>
+
       <div class="indexRouterBottom"></div>
     <mt-tabbar v-model="selected" fixed>
     <!-- 底部导航 -->
-        <router-link v-for="item in tabbarItem" :to="item.href" >
-            <mt-tab-item id="item.tabbarMsg" @click="alert(1)">
+        <router-link v-for="item in tabbarItem" :to="item.href">
+            <mt-tab-item id="item.tabbarMsg">
                 <img slot="icon" :src="item.imgSrc">
                 {{item.tabbarMsg}}
             </mt-tab-item>
@@ -28,7 +24,7 @@ export default {
   name: 'app',
   data () {
     return {
-        isNeedRe:{count:0,title:""},
+        panelClick:{count:0,title:"虚拟生物实验室"},
         selected:"0",
         tabbarItem:[
             {
@@ -36,27 +32,22 @@ export default {
                 imgSrc:"/src/images/27.gif",
                 tabbarMsg:"首页"},
             {
-                href:"/animal",
+                href:{path:"/animal",params:{count:0}},
                 imgSrc:"/src/images/7.gif",
                 tabbarMsg:"动物"},
             {
-                href:"/plant",
+                href:{path:"/plant",params:{count:0}},
                 imgSrc:"/src/images/25.gif",
                 tabbarMsg:"植物"},
             {
-                href:"/human",
+                href:{path:"/human",params:{count:0}},
                 imgSrc:"/src/images/23.gif",
                 tabbarMsg:"人类"}
-        ],
+        ]
     }
   },
     methods:{
 
-    },
-    computed:{
-        isNeedRe(){
-            count:($route.path).split("/").length==2?0:this.isNeedRe.count
-        }
     }
 }
 

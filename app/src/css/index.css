@@ -29,4 +29,4 @@
 .my-btn-box{
     margin-top:50px;
 }
-.router-link-active{background: rgba(132, 202, 202, 0.36)}
+.mint-tabbar .router-link-active{background: rgba(132, 202, 202, 0.36)}

@@ -1,14 +1,14 @@
 <template>
 	<div>
-        <mt-header title="虚拟生物实验室" fixed>
-            <router-link to="/" slot="left" v-show="panelClick.count!=0">
-                <mt-button icon="back" @click="panelClick.count--;">返回</mt-button>
+        <mt-header :title="$route.path.split('/').length>2?panelClick.title:title" fixed>
+            <router-link to="/index" slot="left" v-show="$route.path!='/index'">
+                <mt-button icon="back" @click="panelClick.count--">返回</mt-button>
             </router-link>
         </mt-header>
         <router-view :panelClick="panelClick">
 
         </router-view>
-        <div class="content" v-show="panelClick.count!=1">
+        <div class="content" v-show="$route.path==='/index'">
             <div class="page-swipe" >
                 <mt-swipe :auto="2000" :show-indicators="true" :speed="300">
                     <mt-swipe-item :class="{slide1:true}"><img src="../images/animal1.jpg" alt=""></mt-swipe-item>
@@ -17,7 +17,7 @@
                 </mt-swipe>
             </div>
             <div class="page js_show">
-                <my-panel :panelArray=indexNews :panelClick=panelClick></my-panel>
+                <my-panel :panelArray="indexNews" :panelClick="panelClick"></my-panel>
             </div>
         </div>
 	</div>
@@ -51,7 +51,8 @@
                         newsTitle:"人类",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
-                ]
+                ],
+                title:"虚拟生物实验室"
 			}
 		},
 //        components:{

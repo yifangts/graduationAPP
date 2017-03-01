@@ -1,15 +1,15 @@
 <template>
 	<div>
-        <mt-header title="动物" fixed>
-            <router-link to="/animal" slot="left" v-show="panelClick.count!=0">
-                <mt-button icon="back" @click="panelClick.count--;">返回</mt-button>
+        <mt-header :title="$route.path.split('/').length>2?panelClick.title:'动物'" fixed>
+            <router-link to="/animal" slot="left" v-show="$route.path!='/animal'">
+                <mt-button icon="back" @click="panelClick.count--">返回</mt-button>
             </router-link>
         </mt-header>
         <router-view :panelClick="panelClick">
 
         </router-view>
-        <div class="content" v-show="panelClick.count!=1">
-            <my-panel :panelArray=aniExperiments :panelClick=panelClick></my-panel>
+        <div class="content" v-show="$route.path==='/animal'">
+            <my-panel :panelArray="aniExperiments" :panelClick="panelClick"></my-panel>
         </div>
 	</div>
 </template>
