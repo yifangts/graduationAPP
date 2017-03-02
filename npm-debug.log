@@ -1,6 +1,6 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'd:\\Program Files\\nodejs\\node.exe',
-1 verbose cli   'd:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli [ 'D:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'run',
 1 verbose cli   'dev' ]
 2 info using npm@3.10.8
@@ -10,8 +10,8 @@
 6 silly lifecycle graduationAPP@~predev: no script for predev, continuing
 7 info lifecycle graduationAPP@~dev: graduationAPP@
 8 verbose lifecycle graduationAPP@~dev: unsafe-perm in lifecycle true
-9 verbose lifecycle graduationAPP@~dev: PATH: d:\nvm\v6.9.1\node_modules\npm\bin\node-gyp-bin;G:\Desktop\Graduation Design\graduationApp\graduationAPP\node_modules\.bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\轻松备份 2.0;C:\;rogram Files (x86)\Common Files\Acronis\SnapAPI\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;%QUARTUS_ROOTDIR%\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files (x86)\Git\cmd;d:\nvm;d:\Program Files\nodejs;C:\Users\Oo在水一方oO\AppData\Local\atom\bin;C:\Users\Oo在水一方oO\AppData\Local\Microsoft\WindowsApps;D:\Program Files\nodejs\node_modules\npm\node_modules\cnpm;D:\Program Files\mysql-5.7.16-winx64\bin;d:\Program Files (x86)\Microsoft VS Code\bin
-10 verbose lifecycle graduationAPP@~dev: CWD: G:\Desktop\Graduation Design\graduationApp\graduationAPP
+9 verbose lifecycle graduationAPP@~dev: PATH: d:\nvm\v6.9.1\node_modules\npm\bin\node-gyp-bin;C:\Users\Beiing\Desktop\graduationAPP\node_modules\.bin;C:\Users\Beiing\bin;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\local\bin;D:\Program Files\Git\usr\bin;D:\Program Files\Git\usr\bin;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;C:\Users\Beiing\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;D:\nvm;D:\Program Files\nodejs;D:\Program Files\Git\cmd;C:\Users\Beiing\AppData\Local\atom\bin;D:\Program Files\Git\usr\bin\vendor_perl;D:\Program Files\Git\usr\bin\core_perl
+10 verbose lifecycle graduationAPP@~dev: CWD: C:\Users\Beiing\Desktop\graduationAPP
 11 silly lifecycle graduationAPP@~dev: Args: [ '/d /s /c',
 11 silly lifecycle   'cross-env NODE_ENV=development webpack-dev-server --open --inline --hot --port 8085' ]
 12 silly lifecycle graduationAPP@~dev: Returned: code: 1  signal: null
@@ -27,9 +27,9 @@
 14 verbose stack     at maybeClose (internal/child_process.js:877:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid graduationAPP@
-16 verbose cwd G:\Desktop\Graduation Design\graduationApp\graduationAPP
-17 error Windows_NT 10.0.14393
-18 error argv "d:\\Program Files\\nodejs\\node.exe" "d:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dev"
+16 verbose cwd C:\Users\Beiing\Desktop\graduationAPP
+17 error Windows_NT 6.1.7600
+18 error argv "D:\\Program Files\\nodejs\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dev"
 19 error node v6.9.1
 20 error npm  v3.10.8
 21 error code ELIFECYCLE
