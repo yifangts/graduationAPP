@@ -9,6 +9,7 @@
 </style>
 <script>
     export default{
+        name:"plantExper",
         data(){
             return{
                 msg:'hello plant'

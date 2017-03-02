@@ -9,6 +9,7 @@
 </style>
 <script>
     export default{
+        name:"humanExper",
         data(){
             return{
                 msg:'hello human'

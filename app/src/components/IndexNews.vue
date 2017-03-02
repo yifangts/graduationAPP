@@ -3,6 +3,7 @@
         <p>{{msg}}</p>
         <br>
         {{$route.path}}
+        <button @click="ccc()">anniu</button>
     </div>
 </template>
 <style>
@@ -10,7 +11,7 @@
 </style>
 <script>
     export default{
-        name:"indexNews1",
+        name:"indexNews",
         data(){
             return{
                 msg:'这是新闻'
@@ -22,9 +23,5 @@
                 alert(1)
             }
         }
-//        components:{
-//            'other-component':OtherComponent,
-//            HeaderComponent,
-//        }
     }
 </script>
