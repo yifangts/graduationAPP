@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/css.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>address</th>
+        </tr>
+        {{#each(array)}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.img_src}}}}</td>
+                <td>{{this.content}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</body>
+</html>
