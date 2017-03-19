@@ -22,6 +22,13 @@
 				value:'',
                 aniExperiments:[
                     {
+                        href:"/animal/exper/ciji",
+                        imgSrc:"/src/images/human/exper1.jpg",
+                        newsTitle:"刺激强度和频率对肌肉收缩的影响",
+                        newsMsg:"本实验用机械-电换能器将肌肉收缩的机械变化转变为电变化，通过生理信号采集仪分析，并经计算机实时分析系统描记肌肉的收缩与动作电位，观察刺激强度和频率对骨骼肌收缩的影响，掌握骨骼肌动作电位与机械收缩同步记录的方法及其基本波形的判断。"
+                    },
+                    /*
+                    {
                         href:"/animal/exper/0",
                         imgSrc:"/src/images/animal/exper1.jpg",
                         newsTitle:"光对鼠妇生活的影响",
@@ -33,6 +40,7 @@
                         newsTitle:"观察草履虫",
                         newsMsg:"由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                     },
+                    */
                     {
                         href:"/animal/exper/2",
                         imgSrc:"/src/images/animal/exper3.jpg",

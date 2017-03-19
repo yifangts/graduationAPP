@@ -4,12 +4,14 @@
 // import Index from './components/Index.vue'
 import IndexNew from './components/IndexNews.vue'
 import AnimalExper from './components/AnimalExper.vue'
+// import AnimalExper0 from './components/AnimalExper0.vue'
 import PlantExper from './components/PlantExper.vue'
 import HumanExper from './components/HumanExper.vue'
 const Index = resolve => require(['./components/Index.vue'], resolve)
 const Human = resolve => require(['./components/Human.vue'], resolve)
 const Plant = resolve => require(['./components/Plant.vue'], resolve)
 const Animal = resolve => require(['./components/Animal.vue'], resolve)
+const AnimalExper0 = resolve => require(['./components/AnimalExper0.vue'], resolve)
 // const IndexNew = resolve => require(['./components/IndexNews.vue'], resolve)
 // const AnimalExper = resolve => require(['./components/AnimalExper.vue'], resolve)
 // const PlantExper = resolve => require(['./components/PlantExper.vue'], resolve)
@@ -19,7 +21,9 @@ const Animal = resolve => require(['./components/Animal.vue'], resolve)
 export default {
     routes:[
 		{path:'/animal', component:Animal,
-            children:[{path:'exper/:index',component:AnimalExper}
+            children:[
+                {path:'exper/ciji',component:AnimalExper0},
+                {path:'exper/:index',component:AnimalExper}
                      ]
 		},
 		{path:'/plant', component:Plant,

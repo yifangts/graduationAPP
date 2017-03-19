@@ -10,7 +10,6 @@ import routerConfig from './router-config'
 import newsPanel from './components/NewsPanel.vue'
 Vue.component("my-panel", newsPanel);
 
-
 Vue.use(Mint)
 Vue.use(VueRouter);
 const router=new VueRouter(routerConfig);
