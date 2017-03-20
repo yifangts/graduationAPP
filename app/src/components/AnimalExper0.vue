@@ -22,17 +22,63 @@
             </div>
             <button class="primary" id="created" @click="show=!show;">开始实验</button>
         </div>
-        
+
         <div class="chart" v-show="show">
             <button class="warn" @click="show=!show">返回文档</button>
-            
+            <mt-radio @change="stimulatioImpu=stimulatioStyle=='1'?'1':'3';"
+                title="实验方法"
+                v-model="stimulatioStyle"
+                :options="experStyle">
+            </mt-radio>
+            <mt-radio @change='styleChange()'
+                title="刺激方式"
+                v-model="stimulatioImpu"
+                :options="stimulatioStyle=='1'?experImpu1:experImpu2">
+            </mt-radio>
         </div>
-        <div id="main"></div> 
-        <div id="main2"></div> 
-        <button class="primary" @click="vue_charts()">开始实验</button>
+        <button class="primary" @click="vue_charts();">开始实验</button>
+        <div id="exper">
+
+        </div>
+        <!--<div id="main"></div>-->
+        <!--<div id="main2"></div>-->
+
     </div>
 </template>
 <style scope>
+    .mint-radiolist{
+        display: flex;
+        font-size: .14rem;
+    }
+    .mint-radiolist .mint-radiolist-title{
+        padding:0;
+        line-height:.48rem;
+        margin:0;
+        width: 25%;
+    }
+    .mint-radiolist .mint-cell{
+        padding:0;
+        margin:0;
+        width: 37.5%;
+    }
+    .mint-radiolist .mint-cell label, .mint-cell .mint-cell-wrapper{
+        padding:0;
+        font-size: .14rem;
+        background-image: none;
+    }
+    .mint-radiolist .mint-cell:last-child{
+        background-image: none;
+    }
+    .mint-radio-input:checked + .mint-radio-core {
+        background-color: #1AAD19;
+        border-color: #1AAD19;
+    }
+    .mint-radiolist .mint-radio-core::after{
+        top:5px;
+        left:5px;
+        width: 10px;
+        height: 10px;
+    }
     #main,#main2{
         width: 100%;
         height: 200px;
@@ -45,17 +91,19 @@
         color: #fff;
         margin: 5px;
         height: 36px;
-    }  
+    }
     button.warn{
         background-color: #E64340;
         border-color: #E64340;
-    } 
+    }
     button.primary{
         background-color: #1AAD19;
         border-color: #1AAD19;
     }
     .header{font-size: 20px;color:#333;line-height: 36px;color: #000;}
     .sub_title{
+        display: inline-block;
+        width:70%;
         font-size: 16px;
         line-height: 28px;
         color: #222;
@@ -77,28 +125,111 @@
     }
     .chart{
         width: 100%;
-        height: ;
-        overflow-x:auto; 
+        /*height: ;*/
+        overflow-x:auto;
     }
 </style>
 <script>
     var echarts = require('echarts');
     var $ =require('jquery')
+    var Xarray=createX(.02,2.0)
     var voltage={
             title:"刺激电压与肌肉收缩特征",
-            xData:['1', '2', '3', '4', '5', '10', '15', '20', '30', '40', '60', '80'],
-            tip:['刺激电压'],
+            xData:Xarray,
+            tip:['收缩力'],
             color:"rgb(219,50,51)",
-            yData:[12, 12, 14, 16, 19, 35, 18, 14, 12, 12, 12, 12]
+            yData:createY(Xarray,[ '1.2', '1.3',  15,  '1.3', '1.2'],1.38)
         },
         frequency={
             title:"刺激频率与肌肉收缩特征",
-            xData:['1Hz', '2Hz', '3Hz', '4Hz', '5Hz', '10Hz', '15Hz', '20Hz', '30Hz', '40Hz', '60Hz', '80Hz'],
-            tip:['刺激电压'],
+            xData:[1,2,3,4,5,6,7,8,9,10,11,12],
+            tip:['收缩力'],
             color:"rgb(0,136,212)",
-            yData:[8, 8, 9, 11, 24, 39, 28, 12, 14, 9, 8, 7]
+            yData:[1, 1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2, 1]
         };
 
+    /**
+     * 根据传入的强度增量,X轴最值,最大刺激强度生成一个X轴坐标数组
+     * @param step 强度增量 Number
+     * @param target X轴最值 Number
+     * @param max   最大刺激强度 Number
+     * @returns {Array}
+     */
+    function createX(step,target) {
+        var arr=[];arr[0]=.1
+        for(var i=1;arr[i-1]<target;i++){
+            var a;
+            if(arr[i-1]<target/3){
+                a=arr[i-1]+step/2
+            }else if(arr[i-1]<target/2){
+                a=arr[i-1]+step
+            }else{
+                a=arr[i-1]+step*2
+            }
+            arr[i]=parseFloat(a.toFixed(2))
+        }
+        return arr;
+    }
+
+    /**
+     * 根据传入的X轴坐标数组和Y轴模板数组,通过不同的放大倍数,将模板数组进行处理,并组成数组返回
+     * @param Xarr X轴坐标数组 Array
+     * @param Yarr  Y轴模板数组 Array  对于数字将会进行处理,字符串不处理
+     * @returns {Array}
+     */
+    function createY(Xarr,Yarr,max) {
+        var newArr=[],aaa='';
+        for(var i=0,e=0;i<Xarr.length;i++){
+            if(typeof(Yarr[e])=='number'){
+                aaa=Xarr[i]>max?max:Xarr[i];
+                var a=Yarr[e]*aaa;
+                newArr[i]=parseFloat(a.toFixed(2))
+            }else {
+                newArr[i]=Yarr[e]
+            }
+            e++
+            if(e==Yarr.length){
+                e=0
+            }
+        }
+        return newArr
+    }
+
+    frequency_Xdata(.5,48)
+
+    function frequency_Xdata(step,target) {
+        var arr=[],brr=[],middle=0;arr[0]=0;brr[0]='0Hz';
+        for(var i=1;middle<target;i++){
+            var a;
+            a=middle+step
+            middle=parseFloat(a.toFixed(2))
+            arr[i]=middle
+            brr[i]=middle+'Hz'
+        }
+        return {Num:arr,Str:brr}
+    }
+
+//    frequency_Ydata(frequency_Xdata(.5,48).Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],36)
+    function frequency_Ydata(Xarr,Yarr,max) {
+        var newArr=[],aaa='';
+        for(var i=0,e=0;i<Xarr.length;i++){
+            if(typeof(Yarr[e])=='number'){
+                aaa=Xarr[i]>max?max:Xarr[i];
+                var a;
+                    a=Yarr[e]*aaa*.08;
+                newArr[i]=parseFloat(a.toFixed(2))
+            }else{
+                newArr[i]=Yarr[e]
+            }
+            e++
+            if(e==Yarr.length){
+                e=0
+            }
+        }
+        console.log(Xarr)
+        console.log(newArr)
+        return newArr
+    }
     function chart(obj_id,obj){
         obj.color=obj.color||"rgb(219,50,51)";
         echarts.init(document.getElementById(obj_id)).setOption(
@@ -212,10 +343,11 @@
         ]
         })
     }
-    
+
     $(function(){
         // chart('main',frequency)
         // chart("main2",voltage)
+
     })
 
 
@@ -226,16 +358,68 @@ export default{
             return{
                 myChart:'',
                 show:true,
+                main1:false,
+                stimulatioStyle:"2",
+                stimulatioImpu:'1',
+                experStyle:[
+                    {
+                        label: '电压',
+                        value: '1',
+                    },
+                    {
+                        label: '频率',
+                        value: '2'
+                    }
+                ],
+                experImpu1:[
+                    {
+                        label: '单刺激',
+                        value: '1'
+                    },
+                    {
+                        label: '自动强度刺激',
+                        value: '2'
+                    }
+                ],
+                experImpu2:[
+                    {
+                        label:'串刺激',
+                        value:'3'
+                    }
+                ],
                 winsHeight:window.screen.height
             }
         },
         mounted(){
-            chart('main2',frequency)
-            chart("main",voltage)
+
         },
         methods:{
             vue_charts(){
-                
+                var str,idName,obj;
+                if(this.stimulatioStyle=="1"){
+                    str='<div id="main"></div>';
+                    idName='main';
+                    obj=voltage
+                }else{
+                    str='<div id="main2"></div>';
+                    idName='main2';
+                    var d=frequency_Xdata(.5,28)
+                    frequency.xData=d.Str
+                    frequency.yData=frequency_Ydata(d.Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],18)
+                    obj=frequency
+                }
+                $("#exper").html(str)
+//                this.main1=true
+                chart(idName,obj)
+            },
+            styleChange(){
+                if(this.stimulatioImpu=='1'){
+                    voltage.xData=createX(.02,2.0)
+                    voltage.yData=createY(voltage.xData,['1.2', '1.3',  15,  '1.3', '1.2'],1.38)
+                }else if(this.stimulatioImpu=='2'){
+                    voltage.xData=createX(.05,3.0)
+                    voltage.yData=createY(voltage.xData,[ '1.2', '1.3',  15,  '1.3', '1.2'],1.38)
+                }
             }
         }
 }
