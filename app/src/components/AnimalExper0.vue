@@ -195,20 +195,28 @@
         return newArr
     }
 
-    frequency_Xdata(.5,48)
+    frequency_Xdata([1,2,3,4,6,12,24])
 
-    function frequency_Xdata(step,target) {
-        var arr=[],brr=[],middle=0;arr[0]=0;brr[0]='0Hz';
-        for(var i=1;middle<target;i++){
-            var a;
-            a=middle+step
-            middle=parseFloat(a.toFixed(2))
-            arr[i]=middle
-            brr[i]=middle+'Hz'
+
+    function frequency_Xdata(tempArr) {
+        var arr=[],brr=[];arr[0]=0;brr[0]='0Hz'
+        for(var i=0;i<tempArr.length-1;i++){
+            var cc=disArr(tempArr[i]),dd=[];
+//            for(var j=0;j<)
+            arr=arr.concat(cc)
+            brr=brr.concat(dd)
         }
+        console.log(arr)
+        console.log(brr)
         return {Num:arr,Str:brr}
     }
-
+    function disArr(num) {
+        var dis=num,arr=['1', '1'];
+        for(var i=0;i<dis;i++){
+            arr=arr.concat([1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2])
+        }
+        return arr.concat(['1', '1'])
+    }
 //    frequency_Ydata(frequency_Xdata(.5,48).Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],36)
     function frequency_Ydata(Xarr,Yarr,max) {
         var newArr=[],aaa='';
