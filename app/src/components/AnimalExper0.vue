@@ -20,11 +20,11 @@
 则肌肉产生完全
 </p>
             </div>
-            <button class="primary" id="created" @click="show=!show;">开始实验</button>
+            <button class="primary" id="created" @click="show=!show;">进入实验</button>
         </div>
 
         <div class="chart" v-show="show">
-            <button class="warn" @click="show=!show">返回文档</button>
+            <button class="warn" @click="show=!show;return_text()">返回文档</button>
             <mt-radio @change="stimulatioImpu=stimulatioStyle=='1'?'1':'3';"
                 title="实验方法"
                 v-model="stimulatioStyle"
@@ -35,14 +35,15 @@
                 v-model="stimulatioImpu"
                 :options="stimulatioStyle=='1'?experImpu1:experImpu2">
             </mt-radio>
+            <button class="primary" @click="vue_charts();">启动</button>
         </div>
-        <button class="primary" @click="vue_charts();">开始实验</button>
-        <div id="exper">
+
+        <div id="exper" style="display: none;">
 
         </div>
         <!--<div id="main"></div>-->
         <!--<div id="main2"></div>-->
-
+        <!--<div id="main3"></div>-->
     </div>
 </template>
 <style scope>
@@ -79,7 +80,7 @@
         width: 10px;
         height: 10px;
     }
-    #main,#main2{
+    #main,#main2,#main3{
         width: 100%;
         height: 200px;
     }
@@ -146,7 +147,52 @@
             tip:['收缩力'],
             color:"rgb(0,136,212)",
             yData:[1, 1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2, 1]
-        };
+        }
+
+//    tempY([1,2,3,4,6,12,24,36])
+//    function tempY(aArr,bArr) {
+//        var qw=[]
+//        for(var i=0;i<aArr.length-1;i++){
+//            var n=aArr[i],
+//                m=aArr[i+1]-n;
+//            console.log(n)
+//            for(var j=0;j<n;j++){
+//                qw[qw.length]=aArr[i]+j*m/n
+//            }
+//        }
+//        qw[qw.length]=aArr[i]
+//        console.log(qw)
+//    }
+//    tempX([1,2,3,4,6,12,24,36],[1,1.2,8,11,11.8,7,1.2,1])
+    function tempX(aArr,bArr,percentArr) {
+        var arr=[],brr=[];
+        for(var i=0;i<aArr.length;i++){
+            for(var j=0;j<bArr.length;j++){
+                arr[arr.length]=typeof(bArr[j])=='number'?bArr[j]*percentArr[i]:bArr[j]
+                brr[brr.length]=aArr[i]+j*aArr[i]/bArr.length+'Hz'
+            }
+
+        }
+//        console.log(arr)
+//        console.log(brr)
+        return{
+            Num:arr,
+            Str:brr
+        }
+    }
+
+    $(function(){
+//        var d=tempX([1,2,3,4,6,12,24],['1','1.2',10,12,13.2,11,7,'1.2','1'],[.1,.2,.3,.4,.8,2.2,2.5])
+//         chart('main3',{
+//             title:"tempY",
+//             xData:d.Str,
+//             tip:['收缩力'],
+//             color:"rgb(0,136,212)",
+//             yData:d.Num
+//         })
+
+
+    })
 
     /**
      * 根据传入的强度增量,X轴最值,最大刺激强度生成一个X轴坐标数组
@@ -195,62 +241,62 @@
         return newArr
     }
 
-    frequency_Xdata([1,2,3,4,6,12,24])
+//    frequency_Xdata([1,2,3,4,6,12,24])
 
 
-    function frequency_Xdata(tempArr) {
-        var arr=[],brr=[];arr[0]=0;brr[0]='0Hz'
-        for(var i=0;i<tempArr.length-1;i++){
-            var cc=disArr(tempArr[i]),dd=[];
-//            for(var j=0;j<)
-            arr=arr.concat(cc)
-            brr=brr.concat(dd)
-        }
-        console.log(arr)
-        console.log(brr)
-        return {Num:arr,Str:brr}
-    }
-    function disArr(num) {
-        var dis=num,arr=['1', '1'];
-        for(var i=0;i<dis;i++){
-            arr=arr.concat([1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2])
-        }
-        return arr.concat(['1', '1'])
-    }
-//    frequency_Ydata(frequency_Xdata(.5,48).Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],36)
-    function frequency_Ydata(Xarr,Yarr,max) {
-        var newArr=[],aaa='';
-        for(var i=0,e=0;i<Xarr.length;i++){
-            if(typeof(Yarr[e])=='number'){
-                aaa=Xarr[i]>max?max:Xarr[i];
-                var a;
-                    a=Yarr[e]*aaa*.08;
-                newArr[i]=parseFloat(a.toFixed(2))
-            }else{
-                newArr[i]=Yarr[e]
-            }
-            e++
-            if(e==Yarr.length){
-                e=0
-            }
-        }
-        console.log(Xarr)
-        console.log(newArr)
-        return newArr
-    }
+//    function frequency_Xdata(tempArr) {
+//        var arr=[],brr=[];arr[0]=0;brr[0]='0Hz'
+//        for(var i=0;i<tempArr.length-1;i++){
+//            var cc=disArr(tempArr[i]),dd=[];
+////            for(var j=0;j<)
+//            arr=arr.concat(cc)
+//            brr=brr.concat(dd)
+//        }
+//        console.log(arr)
+//        console.log(brr)
+//        return {Num:arr,Str:brr}
+//    }
+//    function disArr(num) {
+//        var dis=num,arr=['1', '1'];
+//        for(var i=0;i<dis;i++){
+//            arr=arr.concat([1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2])
+//        }
+//        return arr.concat(['1', '1'])
+//    }
+////    frequency_Ydata(frequency_Xdata(.5,48).Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],36)
+//    function frequency_Ydata(Xarr,Yarr,max) {
+//        var newArr=[],aaa='';
+//        for(var i=0,e=0;i<Xarr.length;i++){
+//            if(typeof(Yarr[e])=='number'){
+//                aaa=Xarr[i]>max?max:Xarr[i];
+//                var a;
+//                    a=Yarr[e]*aaa*.08;
+//                newArr[i]=parseFloat(a.toFixed(2))
+//            }else{
+//                newArr[i]=Yarr[e]
+//            }
+//            e++
+//            if(e==Yarr.length){
+//                e=0
+//            }
+//        }
+//        console.log(Xarr)
+//        console.log(newArr)
+//        return newArr
+//    }
     function chart(obj_id,obj){
         obj.color=obj.color||"rgb(219,50,51)";
         echarts.init(document.getElementById(obj_id)).setOption(
         {
         backgroundColor: '#394056',
         title: {
-        text: obj.title,
-        textStyle: {
-            fontWeight: 'normal',
-            fontSize: 16,
-            color: '#F1F1F3'
-            },
-        left: '6%'
+            text: obj.title,
+            textStyle: {
+                fontWeight: 'normal',
+                fontSize: 16,
+                color: '#F1F1F3'
+                },
+            left: '6%'
         },
         tooltip: {
             trigger: 'axis',
@@ -351,15 +397,6 @@
         ]
         })
     }
-
-    $(function(){
-        // chart('main',frequency)
-        // chart("main2",voltage)
-
-    })
-
-
-
 export default{
         name:"animalExper0",
         data(){
@@ -367,7 +404,7 @@ export default{
                 myChart:'',
                 show:true,
                 main1:false,
-                stimulatioStyle:"2",
+                stimulatioStyle:"1",
                 stimulatioImpu:'1',
                 experStyle:[
                     {
@@ -411,14 +448,17 @@ export default{
                 }else{
                     str='<div id="main2"></div>';
                     idName='main2';
-                    var d=frequency_Xdata(.5,28)
+                    var d=tempX([1,2,3,4,6,12,24],['1','1.2',10,12,13.2,11,7,'1.2','1'],[.1,.2,.3,.4,.8,2.2,2.5])
                     frequency.xData=d.Str
-                    frequency.yData=frequency_Ydata(d.Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],18)
+                    frequency.yData=d.Num
                     obj=frequency
                 }
-                $("#exper").html(str)
+                $("#exper").html(str).show()
 //                this.main1=true
                 chart(idName,obj)
+            },
+            return_text(){
+                $("#exper").hide()
             },
             styleChange(){
                 if(this.stimulatioImpu=='1'){
