@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './css/basestyle.css'
@@ -9,7 +10,8 @@ import App from './App.vue'
 import routerConfig from './router-config'
 import newsPanel from './components/NewsPanel.vue'
 Vue.component("my-panel", newsPanel);
-
+Vue.use(VueResource)
+Vue.http.options.xhr = { withCredentials: true }
 Vue.use(Mint)
 Vue.use(VueRouter);
 const router=new VueRouter(routerConfig);

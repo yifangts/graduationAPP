@@ -28,6 +28,15 @@
     }
 </style>
 <script>
+//    var axios=require('axios');
+    var obj={
+        "q":"生物实验",
+        "key":""
+    }
+//    axios.jsonp('http://bcp.baidu.com/news/access',obj).then(function (res) {
+//        console.log(res)
+//    })
+
 	export default{
 	    name:"index",
 		data(){
@@ -55,6 +64,14 @@
                 title:"虚拟生物实验室"
 			}
 		},
+
+        mounted(){
+		    this.$http.jsonp('http://op.juhe.cn/onebox/news/query',obj).then(function (res) {
+
+                console.log(res)
+            })
+            console.log(1)
+        },
 //        components:{
 //            "my-panel":newsPanel
 //        },

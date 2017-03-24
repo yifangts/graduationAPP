@@ -6,8 +6,7 @@
                 <p class="text tl">本实验用机械-电换能器将肌肉收缩的机械变化转变为电变化，通过生理信号采集仪分析，并经计算机实时分析系统描记肌肉的收缩与动作电位，观察刺激强度和频率对骨骼肌收缩的影响，掌握骨骼肌动作电位与机械收缩同步记录的方法及其基本波形的判断。</p>
                 <p class="header">刺激强度和频率对肌肉收缩的影响</p>
                 <p class="sub_title">实验原理</p>
-                <p class="text tl">利用蟾蜍坐骨神经腓肠肌标本，研究不同频率的电刺激对肌肉收缩的影响，刺激神
-        经会引起肌肉收缩。肌肉、神经和腺体组织称为可兴奋组织，它们有较大的兴奋性。</p>
+                <p class="text tl">利用蟾蜍坐骨神经腓肠肌标本，研究不同频率的电刺激对肌肉收缩的影响，刺激神经会引起肌肉收缩。肌肉、神经和腺体组织称为可兴奋组织，它们有较大的兴奋性。</p>
                 <p class="text tl">不同组织、细胞的兴奋表现各不相同，神经组织的兴奋表现为动作电位，肌肉的兴奋主要表现为肌肉收缩活动。因此，观察肌肉是否收缩可以判断它是否产生了兴奋。一个刺激是否可以能使组织发生兴奋，不仅与<span class="blue">刺激形式</span>有关，还与<span class="blue">刺激时间</span>、<span class="blue">刺激强度</span>、<span class="blue">强度—时间变化率</span>三要素有关，在一定的刺激时间（波宽）下，刚能引起组织发生兴奋的刺激称为阈刺激，所达到的刺激强度为阈强度，能引起组织发生最大兴奋的最小刺激， 称为最大刺激，相应的刺激强度叫最大刺激强度；界于阈刺激和最大刺激间的刺激称为阈上刺激，相应的强度称为阈上刺激强度。</p>
                 <p class="sub_title">刺激电压与肌肉收缩特征</p>
                 <p class="text tl">恰好能引起肌肉出现微小收缩的刺激叫阈刺激，此时的此家强度为阈强度，引起肌肉出现最大收缩的最小的刺激强度为最大刺激强度，在两者之间的刺激强度为阈上刺激强度。</p>
@@ -16,13 +15,10 @@
                 <p class="header">刺激频率对肌肉收缩的影响</p>
                 <p class="text tl">刺激神经使神经细胞产生兴奋，兴奋沿神经纤维传导，通过神经肌接头的化学传递，使肌肉终板膜上产生终板电位，终板电位可以引起肌肉产生兴奋（即动作电位），传遍整个肌纤维，再通过兴奋—收缩偶联使肌纤维中粗、细肌丝产生相对滑动，宏观上表现为肌肉收缩。肌肉收缩的形式，不仅与刺激本身有关，而且还与刺激频率有关。当刺激频率较小，刺激的间隔大于一次肌肉收缩舒张的持续时间，则肌肉收缩表现为一连串的单收缩；增大刺激频率，使刺激的间隔大于一次肌肉收缩的刺激时间、小于一次肌肉收缩舒张的持续时间，则肌肉产生不完全强直收缩；继续增加刺激频率，使刺激的间隔小于一次肌肉收缩的收缩时间，则肌肉产生完全强直收缩。</p>
                 <p class="sub_title">刺激频率与肌肉收缩特征</p>
-                <p class="text tl">当刺激频率较小，刺激间隔大于一次肌肉收缩舒张的持续时间，则肌肉收缩表现为一连串的单收缩；增大刺激频率，使刺激的间隔间于肌肉一次收缩和一次持续舒张的时间，则肌肉产生不完全强直收缩；继续增加刺激频率，使刺激的间隔小于肌肉收缩的收缩时间，
-则肌肉产生完全
-</p>
+                <p class="text tl">当刺激频率较小，刺激间隔大于一次肌肉收缩舒张的持续时间，则肌肉收缩表现为一连串的单收缩；增大刺激频率，使刺激的间隔间于肌肉一次收缩和一次持续舒张的时间，则肌肉产生不完全强直收缩；继续增加刺激频率，使刺激的间隔小于肌肉收缩的收缩时间，则肌肉产生完全</p>
             </div>
             <button class="primary" id="created" @click="show=!show;">进入实验</button>
         </div>
-
         <div class="chart" v-show="show">
             <button class="warn" @click="show=!show;return_text()">返回文档</button>
             <mt-radio @change="stimulatioImpu=stimulatioStyle=='1'?'1':'3';"
@@ -30,12 +26,24 @@
                 v-model="stimulatioStyle"
                 :options="experStyle">
             </mt-radio>
-            <mt-radio @change='styleChange()'
-                title="刺激方式"
-                v-model="stimulatioImpu"
-                :options="stimulatioStyle=='1'?experImpu1:experImpu2">
-            </mt-radio>
-            <button class="primary" @click="vue_charts();">启动</button>
+
+            <div class="cell cell_switch">
+                <div class="cell__bd">从小递增</div>
+                <div class="cell__ft">
+                    <input class="switch" type="checkbox" @change='isAddUp($event)'>
+                </div>
+            </div>
+            <div class="cell cell_switch">
+                <div class="cell__bd">强度选择</div>
+                <div class="cell__ft powerCtrl">
+                    <button id="powerSub" class='primary' @click="onValuesChange(-1)" >减少</button>
+                    <input type="text" :value='powerChoose.values[powerChoose.select]' readonly>
+                    <button id=powerAdd class='primary' @click="onValuesChange(1)"  >增加</button>
+                </div>
+            </div>
+            <button v-if="stimulatioStyle=='1'" class="btn_single" @click="single_ciji();">单刺激</button>
+            <button v-if="stimulatioStyle=='1'" class="btn_series" @click="series_ciji();">自动强度刺激</button>
+            <mt-button v-if="stimulatioStyle=='2'||stimulatioStyle=='3'" class="primary" @click="vue_charts();">启动</mt-button>
         </div>
 
         <div id="exper" style="display: none;">
@@ -44,20 +52,127 @@
         <!--<div id="main"></div>-->
         <!--<div id="main2"></div>-->
         <!--<div id="main3"></div>-->
+
     </div>
 </template>
 <style scope>
+    .powerCtrl{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .powerCtrl>.primary{
+        width: 40%;
+        height:33px;
+    }
+    .powerCtrl>input{
+        width: 20%;
+        text-align: center;
+        height: 30px;
+        padding:0;
+        margin:5px 0;
+        border-radius: 2px;
+        font-size: 16px;
+        border:1px solid #ccc;
+    }
+    .switch {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    .switch,
+    .switch-cp__box {
+        position: relative;
+        width: 52px;
+        height: 26px;
+        border: 1px solid #DFDFDF;
+        outline: 0;
+        border-radius: 16px;
+        box-sizing: border-box;
+        background-color: #DFDFDF;
+        -webkit-transition: background-color 0.1s, border 0.1s;
+        transition: background-color 0.1s, border 0.1s;
+    }
+    .switch:before,
+    .cell_switch.cell{
+        padding:0;
+    }
+    .cell_switch .cell__bd{
+        flex:inherit;
+        -webkit-flex: inherit;
+        text-align: left;
+        padding-right: 20px;
+        line-height: .48rem;
+        margin: 0;
+        width: 25%;
+        text-align: center;
+        font-size: 12px;
+        display: block;
+        color: #888;
+    }
+    .switch-cp__box:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 24px;
+        border-radius: 12px;
+        background-color: #FDFDFD;
+        -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+        transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+        transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+        transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+    }
+    .switch:after,
+    .switch-cp__box:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+        transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+        transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+        transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    }
+    .switch:checked,
+    .switch-cp__input:checked ~ .switch-cp__box {
+        border-color: #04BE02;
+        background-color: #04BE02;
+    }
+    .switch:checked:before,
+    .switch-cp__input:checked ~ .switch-cp__box:before {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    /*~~相同父元素下,选中前一个选择器后面所有的后一个选择器元素*/
+    .switch:checked:after,
+    .switch-cp__input:checked ~ .switch-cp__box:after {
+        -webkit-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+    .switch-cp__input {
+        position: absolute;
+        left: -9999px;
+    }
+    .switch-cp__box {
+        display: block;
+    }
+
     .mint-radiolist{
         display: flex;
         font-size: .14rem;
     }
-    .mint-radiolist .mint-radiolist-title{
+    .mint-radiolist .mint-radiolist-title {
         padding:0;
         line-height:.48rem;
         margin:0;
         width: 25%;
     }
-    .mint-radiolist .mint-cell{
+    .mint-cell{
         padding:0;
         margin:0;
         width: 37.5%;
@@ -67,7 +182,7 @@
         font-size: .14rem;
         background-image: none;
     }
-    .mint-radiolist .mint-cell:last-child{
+    .mint-cell:last-child{
         background-image: none;
     }
     .mint-radio-input:checked + .mint-radio-core {
@@ -85,7 +200,7 @@
         height: 200px;
     }
     button{
-        width: 90%;
+        width: 40%;
         border-radius: 5px;
         border: 1px solid #ccc;
         font-size: 18px;
@@ -93,13 +208,22 @@
         margin: 5px;
         height: 36px;
     }
+    button.btn_series{
+        background-color: #03a9f4;
+    }
+    button.btn_single{
+        background-color: #cddc39;
+    }
     button.warn{
+        width: 90%;
         background-color: #E64340;
         border-color: #E64340;
     }
     button.primary{
+        width: 90%;
         background-color: #1AAD19;
         border-color: #1AAD19;
+        color: #fff;
     }
     .header{font-size: 20px;color:#333;line-height: 36px;color: #000;}
     .sub_title{
@@ -132,14 +256,14 @@
 </style>
 <script>
     var echarts = require('echarts');
-    var $ =require('jquery')
-    var Xarray=createX(.02,2.0)
+    var $ =require('jquery');
+    var Xarray=createX(.02,2.0);
     var voltage={
             title:"刺激电压与肌肉收缩特征",
             xData:Xarray,
             tip:['收缩力'],
             color:"rgb(219,50,51)",
-            yData:createY(Xarray,[ '1.2', '1.3',  15,  '1.3', '1.2'],1.38)
+            yData:createY(Xarray,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
         },
         frequency={
             title:"刺激频率与肌肉收缩特征",
@@ -147,23 +271,10 @@
             tip:['收缩力'],
             color:"rgb(0,136,212)",
             yData:[1, 1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2, 1]
-        }
+        },
+        single_xtemp=[.2,.4,.6,.8,1],
+        single_ytemp=[ '1.2', '1.3', 15,  '1.3', '1.2'];
 
-//    tempY([1,2,3,4,6,12,24,36])
-//    function tempY(aArr,bArr) {
-//        var qw=[]
-//        for(var i=0;i<aArr.length-1;i++){
-//            var n=aArr[i],
-//                m=aArr[i+1]-n;
-//            console.log(n)
-//            for(var j=0;j<n;j++){
-//                qw[qw.length]=aArr[i]+j*m/n
-//            }
-//        }
-//        qw[qw.length]=aArr[i]
-//        console.log(qw)
-//    }
-//    tempX([1,2,3,4,6,12,24,36],[1,1.2,8,11,11.8,7,1.2,1])
     function tempX(aArr,bArr,percentArr) {
         var arr=[],brr=[];
         for(var i=0;i<aArr.length;i++){
@@ -181,17 +292,30 @@
         }
     }
 
+    function powerArr(){
+        var a=[],b=0.1;
+        for(b;b<=1.5;b+=0.02){
+            a[a.length]=b.toFixed(2)
+        }
+        return a;
+    }
+
+
+    function transform_ydata(array,k) {
+        return array.map(function (item) {
+            return item*k
+        })
+    }
+
+    function transform_xdata(array,count) {
+        return array.map(function (item) {
+            return (parseInt(Math.round(item*count*100)))/100
+        })
+    }
     $(function(){
-//        var d=tempX([1,2,3,4,6,12,24],['1','1.2',10,12,13.2,11,7,'1.2','1'],[.1,.2,.3,.4,.8,2.2,2.5])
-//         chart('main3',{
-//             title:"tempY",
-//             xData:d.Str,
-//             tip:['收缩力'],
-//             color:"rgb(0,136,212)",
-//             yData:d.Num
-//         })
-
-
+        $("#exper").html('<div id="main"></div>').show()
+        voltage.yData=[]
+        chart('main',voltage)
     })
 
     /**
@@ -241,49 +365,6 @@
         return newArr
     }
 
-//    frequency_Xdata([1,2,3,4,6,12,24])
-
-
-//    function frequency_Xdata(tempArr) {
-//        var arr=[],brr=[];arr[0]=0;brr[0]='0Hz'
-//        for(var i=0;i<tempArr.length-1;i++){
-//            var cc=disArr(tempArr[i]),dd=[];
-////            for(var j=0;j<)
-//            arr=arr.concat(cc)
-//            brr=brr.concat(dd)
-//        }
-//        console.log(arr)
-//        console.log(brr)
-//        return {Num:arr,Str:brr}
-//    }
-//    function disArr(num) {
-//        var dis=num,arr=['1', '1'];
-//        for(var i=0;i<dis;i++){
-//            arr=arr.concat([1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2])
-//        }
-//        return arr.concat(['1', '1'])
-//    }
-////    frequency_Ydata(frequency_Xdata(.5,48).Num,['1', '1',1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2,'1', '1'],36)
-//    function frequency_Ydata(Xarr,Yarr,max) {
-//        var newArr=[],aaa='';
-//        for(var i=0,e=0;i<Xarr.length;i++){
-//            if(typeof(Yarr[e])=='number'){
-//                aaa=Xarr[i]>max?max:Xarr[i];
-//                var a;
-//                    a=Yarr[e]*aaa*.08;
-//                newArr[i]=parseFloat(a.toFixed(2))
-//            }else{
-//                newArr[i]=Yarr[e]
-//            }
-//            e++
-//            if(e==Yarr.length){
-//                e=0
-//            }
-//        }
-//        console.log(Xarr)
-//        console.log(newArr)
-//        return newArr
-//    }
     function chart(obj_id,obj){
         obj.color=obj.color||"rgb(219,50,51)";
         echarts.init(document.getElementById(obj_id)).setOption(
@@ -404,6 +485,7 @@ export default{
                 myChart:'',
                 show:true,
                 main1:false,
+                addUp:2,
                 stimulatioStyle:"1",
                 stimulatioImpu:'1',
                 experStyle:[
@@ -432,14 +514,89 @@ export default{
                         value:'3'
                     }
                 ],
-                winsHeight:window.screen.height
+                winsHeight:window.screen.height,
+                single_ydata:[],
+                single_xdata:[],
+                single_count:0,
+                powerChoose: {
+                        values: powerArr(),
+                        select:0
+                },
             }
         },
         mounted(){
-
+            this.longPress()
+//            document.getElementById('powerSub').addEventListener("touchstart",function () {
+//                this.onValuesChange(-1)
+//            })
+//            document.getElementById('powerAdd').addEventListener("touch",function () {
+//                this.onValuesChange(1)
+//            })
         },
         methods:{
-            vue_charts(){
+            longPress() {
+                var timer="",btn=$("#powerAdd,#powerSub"),_this=this,type=-1;
+                btn.addEventListener('touchstart',function (e) {
+                    type=e.target.id=='powerAdd'?1:-1;
+                    timer=setTimeout(function () {
+                        _this.onValuesChange(type)
+                    },500)
+                })
+                btn.addEventListener("touchend",function () {
+                    clearTimeout(timer)
+                })
+            },
+            onValuesChange(type){
+                var obj=this.powerChoose;
+                if(type>0){
+                    if(obj.select>obj.values.length-2){
+                        obj.select=obj.values.length-1
+                    }else{
+                        obj.select+=1
+                    }
+                }else{
+                    if(obj.select<1){
+                        obj.select=0
+                    }else{
+                        obj.select-=1
+                    }
+                }
+
+            },
+            single_ciji(){
+                $("#exper").html('<div id="main"></div>').show()
+                if(this.single_count==0){
+                    this.single_xdata=[];
+                }
+                this.single_count+=1;
+                this.single_ydata=this.single_ydata.concat(transform_ydata(single_ytemp,0.1))
+//                this.single_xdata=this.single_xdata.concat(transform_xdata(single_xtemp,this.single_count))
+                this.single_xdata=this.single_xdata.concat(single_xtemp)
+                voltage.yData=this.single_ydata
+                voltage.xData=this.single_xdata
+                chart('main',voltage)
+            },
+            series_ciji(type){
+                $("#exper").html('<div id="main"></div>').show()
+                this.single_count=0
+                this.single_ydata=[]
+                voltage.yData=createY(Xarray,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
+                voltage.xData=Xarray=createX(.02,2.0)
+                chart('main',voltage)
+            },
+            isAddUp(e){
+                console.log(e.value)
+                console.log(this.addUp,typeof (this.addUp))
+//              if(this.addUp===1){
+//                  $("#exper").html('<div id="main"></div>').show()
+//                  this.single_count=0
+//                  this.single_ydata=[]
+//                  voltage.yData=createY(Xarray,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
+//                  voltage.xData=Xarray=createX(.02,2.0)
+//                  chart('main',voltage)
+//              }
+            },
+            vue_charts(type){
                 var str,idName,obj;
                 if(this.stimulatioStyle=="1"){
                     str='<div id="main"></div>';
