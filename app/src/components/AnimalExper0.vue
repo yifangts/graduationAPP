@@ -21,7 +21,7 @@
         </div>
         <div class="chart" v-show="show">
             <button class="warn" @click="show=!show;return_text()">返回文档</button>
-            <mt-radio @change="stimulatioImpu=stimulatioStyle=='1'?'1':'3';addAuto=false;"
+            <mt-radio @change="experMethod()"
                 title="实验方法"
                 v-model="stimulatioStyle"
                 :options="experStyle">
@@ -301,7 +301,7 @@
     function transform_ydata(array,k) {
         return array.map(function (item) {
 //            return typeof (item)==="number"?item*k:item
-            return item*k
+            return (item*k).toFixed(2)
         })
     }
 
@@ -538,7 +538,7 @@ export default{
                     type=e.target.id=='powerAdd'?1:-1;
                     timer=setInterval(function () {
                         _this.onValuesChange(type)
-                    },200)
+                    },100)
                 })
                 btn.on("touchend",function () {
                     clearInterval(timer)
@@ -599,12 +599,11 @@ export default{
                     this.single_count==0
                     clearInterval(obj.intervalNum)
                 }
-//                $("#exper").html('<div id="main"></div>').show()
-//                this.single_count=0
-//                this.single_ydata=[]
-//                voltage.xData=createX(.02,2.0)
-//                voltage.yData=createY(voltage.xData,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
-//                chart('main',voltage)
+            },
+            experMethod(){
+                this.stimulatioImpu=this.stimulatioStyle=='1'?'1':'3';this.addAuto=false;
+                this.powerChoose.series_text='自动强度刺激'
+                clearInterval(this.powerChoose.intervalNum)
             },
             isAddUp(){
                 var obj=this.powerChoose;
