@@ -21,7 +21,7 @@
         </div>
         <div class="chart" v-show="show">
             <button class="warn" @click="show=!show;return_text()">返回文档</button>
-            <mt-radio @change="stimulatioImpu=stimulatioStyle=='1'?'1':'3';"
+            <mt-radio @change="stimulatioImpu=stimulatioStyle=='1'?'1':'3';addAuto=false;"
                 title="实验方法"
                 v-model="stimulatioStyle"
                 :options="experStyle">
@@ -30,7 +30,7 @@
             <div class="cell cell_switch">
                 <div class="cell__bd">从小递增</div>
                 <div class="cell__ft">
-                    <input class="switch" type="checkbox" @change='isAddUp($event)'>
+                    <input class="switch" type="checkbox" v-model='addAuto' @change='isAddUp($event)'>
                 </div>
             </div>
             <div class="cell cell_switch">
@@ -41,17 +41,14 @@
                     <button id=powerAdd class='primary' @click="onValuesChange(1)"  >增加</button>
                 </div>
             </div>
-            <button v-if="stimulatioStyle=='1'" class="btn_single" @click="single_ciji();">单刺激</button>
-            <button v-if="stimulatioStyle=='1'" class="btn_series" @click="series_ciji();">自动强度刺激</button>
+            <button v-if="stimulatioStyle=='1'" class="btn_single" @click="single_ciji(0);">单刺激</button>
+            <button v-if="stimulatioStyle=='1'" class="btn_series" @click="series_ciji();" v-text='this.powerChoose.series_text'></button>
             <mt-button v-if="stimulatioStyle=='2'||stimulatioStyle=='3'" class="primary" @click="vue_charts();">启动</mt-button>
         </div>
 
-        <div id="exper" style="display: none;">
+        <div id="exper">
 
         </div>
-        <!--<div id="main"></div>-->
-        <!--<div id="main2"></div>-->
-        <!--<div id="main3"></div>-->
 
     </div>
 </template>
@@ -224,6 +221,7 @@
         background-color: #1AAD19;
         border-color: #1AAD19;
         color: #fff;
+        height: 36px;
     }
     .header{font-size: 20px;color:#333;line-height: 36px;color: #000;}
     .sub_title{
@@ -273,7 +271,7 @@
             yData:[1, 1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2, 1]
         },
         single_xtemp=[.2,.4,.6,.8,1],
-        single_ytemp=[ '1.2', '1.3', 15,  '1.3', '1.2'];
+        single_ytemp=[ '.05', '.1', 15,  '.1', '.05'];
 
     function tempX(aArr,bArr,percentArr) {
         var arr=[],brr=[];
@@ -300,18 +298,21 @@
         return a;
     }
 
-
     function transform_ydata(array,k) {
         return array.map(function (item) {
+//            return typeof (item)==="number"?item*k:item
             return item*k
         })
     }
+
+
 
     function transform_xdata(array,count) {
         return array.map(function (item) {
             return (parseInt(Math.round(item*count*100)))/100
         })
     }
+
     $(function(){
         $("#exper").html('<div id="main"></div>').show()
         voltage.yData=[]
@@ -484,8 +485,9 @@ export default{
             return{
                 myChart:'',
                 show:true,
-                main1:false,
-                addUp:2,
+                addUp:false,
+                addAuto:"",
+                isSeries:false,
                 stimulatioStyle:"1",
                 stimulatioImpu:'1',
                 experStyle:[
@@ -519,31 +521,27 @@ export default{
                 single_xdata:[],
                 single_count:0,
                 powerChoose: {
-                        values: powerArr(),
-                        select:0
+                    values: powerArr(),
+                    select:0,
+                    series_text:"自动强度刺激",
+                    intervalNum:""
                 },
             }
         },
         mounted(){
             this.longPress()
-//            document.getElementById('powerSub').addEventListener("touchstart",function () {
-//                this.onValuesChange(-1)
-//            })
-//            document.getElementById('powerAdd').addEventListener("touch",function () {
-//                this.onValuesChange(1)
-//            })
         },
         methods:{
             longPress() {
                 var timer="",btn=$("#powerAdd,#powerSub"),_this=this,type=-1;
-                btn.addEventListener('touchstart',function (e) {
+                btn.on('touchstart',function (e) {
                     type=e.target.id=='powerAdd'?1:-1;
-                    timer=setTimeout(function () {
+                    timer=setInterval(function () {
                         _this.onValuesChange(type)
-                    },500)
+                    },200)
                 })
-                btn.addEventListener("touchend",function () {
-                    clearTimeout(timer)
+                btn.on("touchend",function () {
+                    clearInterval(timer)
                 })
             },
             onValuesChange(type){
@@ -561,40 +559,83 @@ export default{
                         obj.select-=1
                     }
                 }
-
             },
-            single_ciji(){
+            single_ciji(type){
+                var obj=this.powerChoose;
+                this.addAuto=false;
+                if(type==0){
+                    if(this.isSeries){
+                        obj.series_text='自动强度刺激'
+                        this.single_count=0
+                        this.single_ydata=[]
+                        clearInterval(obj.intervalNum)
+                    }
+                }
                 $("#exper").html('<div id="main"></div>').show()
                 if(this.single_count==0){
                     this.single_xdata=[];
                 }
                 this.single_count+=1;
-                this.single_ydata=this.single_ydata.concat(transform_ydata(single_ytemp,0.1))
-//                this.single_xdata=this.single_xdata.concat(transform_xdata(single_xtemp,this.single_count))
+                this.single_ydata=this.single_ydata.concat(transform_ydata(single_ytemp,obj.values[obj.select]))
                 this.single_xdata=this.single_xdata.concat(single_xtemp)
                 voltage.yData=this.single_ydata
                 voltage.xData=this.single_xdata
                 chart('main',voltage)
             },
-            series_ciji(type){
-                $("#exper").html('<div id="main"></div>').show()
-                this.single_count=0
-                this.single_ydata=[]
-                voltage.yData=createY(Xarray,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
-                voltage.xData=Xarray=createX(.02,2.0)
-                chart('main',voltage)
+            series_ciji(){
+                voltage.yData=[]
+                voltage.xData=[]
+                this.isSeries=true;
+                var obj=this.powerChoose,_this=this;
+                if(obj.series_text=="自动强度刺激"){
+                    _this.single_ciji(1)
+                    obj.intervalNum=setInterval(function () {
+                        _this.single_ciji(1)
+                    },1400)
+                    obj.series_text='停止刺激'
+                }else{
+                    obj.series_text='自动强度刺激'
+                    this.single_count==0
+                    clearInterval(obj.intervalNum)
+                }
+//                $("#exper").html('<div id="main"></div>').show()
+//                this.single_count=0
+//                this.single_ydata=[]
+//                voltage.xData=createX(.02,2.0)
+//                voltage.yData=createY(voltage.xData,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
+//                chart('main',voltage)
             },
-            isAddUp(e){
-                console.log(e.value)
-                console.log(this.addUp,typeof (this.addUp))
-//              if(this.addUp===1){
-//                  $("#exper").html('<div id="main"></div>').show()
-//                  this.single_count=0
-//                  this.single_ydata=[]
-//                  voltage.yData=createY(Xarray,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
-//                  voltage.xData=Xarray=createX(.02,2.0)
-//                  chart('main',voltage)
-//              }
+            isAddUp(){
+                var obj=this.powerChoose;
+                if(this.addAuto){
+                    if(obj.series_text=='停止刺激'){
+                        obj.series_text='自动强度刺激'
+                        this.single_count=0
+                        this.single_ydata=[]
+                        clearInterval(obj.intervalNum)
+                    }
+                    if(this.stimulatioStyle=='1'){
+                        $("#exper").html('<div id="main2"></div>').show()
+                        this.single_count=0
+                        this.single_ydata=[]
+                        voltage.xData=createX(.02,2.0)
+                        voltage.yData=createY(voltage.xData,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
+                        chart('main2',voltage)
+                    }else{
+                        var str,idName,obj;
+                            str='<div id="main2"></div>';
+                            idName='main2';
+                            var d=tempX([1,2,3,4,6,12,24],['1','1.2',10,12,13.2,11,7,'1.2','1'],[.1,.2,.3,.4,.8,2.2,2.5])
+                            frequency.xData=d.Str
+                            frequency.yData=d.Num
+                            obj=frequency
+                        $("#exper").html(str).show()
+//                this.main1=true
+                        chart(idName,obj)
+                    }
+                }else{
+
+                }
             },
             vue_charts(type){
                 var str,idName,obj;
