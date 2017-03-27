@@ -565,6 +565,7 @@ export default{
                 this.addAuto=false;
                 if(type==0){
                     if(this.isSeries){
+                        this.isSeries=false
                         obj.series_text='自动强度刺激'
                         this.single_count=0
                         this.single_ydata=[]
