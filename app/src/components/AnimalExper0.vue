@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
         <div class="text-content" v-show="!show">
             <p class="sub_title">实验目的</p>
@@ -52,7 +52,7 @@
 
     </div>
 </template>
-<style scoped>
+<style scope>
     .powerCtrl{
         display: flex;
         justify-content: flex-start;
