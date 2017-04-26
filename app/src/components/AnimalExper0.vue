@@ -52,7 +52,7 @@
 
     </div>
 </template>
-<style scope>
+<style scoped>
     .powerCtrl{
         display: flex;
         justify-content: flex-start;
