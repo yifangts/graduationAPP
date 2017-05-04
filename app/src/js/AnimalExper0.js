@@ -155,6 +155,7 @@ function chart(obj_id,obj){
                     realtime: true,
                     start: 0,
                     end: 20,
+
                     // x:10,
                     // y:180,
                     // top:0,
