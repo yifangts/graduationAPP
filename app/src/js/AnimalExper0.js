@@ -148,6 +148,20 @@ function chart(obj_id,obj){
                     color: '#F1F1F3'
                 }
             },
+            dataZoom: [
+                {
+                    show: true,
+                    realtime: true,
+                    start: 0,
+                    end: 10
+                },
+                {
+                    type: 'outside',
+                    realtime: true,
+                    start: 25,
+                    end: 85
+                }
+            ],
             grid: {
                 left: '3%',
                 right: '4%',
