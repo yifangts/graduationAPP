@@ -1,8 +1,9 @@
 /**
  * Created by Beiing on 2017/4/21.
  */
-var echarts = require('echarts');
-var $ =require('jquery');
+// var echarts = require('echarts');
+// var $ =require('jquery');
+var $ =jQuery;
 var Xarray=createX(.02,2.0);
 var voltage={
         title:"刺激电压与肌肉收缩特征",
@@ -138,7 +139,7 @@ function chart(obj_id,obj){
             },
             legend: {
                 icon: 'rect',
-                itemWidth: 14,
+                itemWidth: 10,
                 itemHeight: 5,
                 itemGap: 13,
                 data: obj.tip,
@@ -153,13 +154,17 @@ function chart(obj_id,obj){
                     show: true,
                     realtime: true,
                     start: 0,
-                    end: 10
+                    end: 20,
+                    // x:10,
+                    // y:180,
+                    // top:0,
+                    // bottom:0
                 },
                 {
-                    type: 'outside',
+                    type: 'inside',
                     realtime: true,
-                    start: 25,
-                    end: 85
+                    start: 0,
+                    end: 10
                 }
             ],
             grid: {
