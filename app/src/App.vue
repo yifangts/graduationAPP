@@ -29,19 +29,19 @@ export default {
         tabbarItem:[
             {
                 href:"/index",
-                imgSrc:"/src/images/27.gif",
+                imgSrc:"/src/images/nav_index.jpg",
                 tabbarMsg:"首页"},
             {
                 href:{path:"/animal",params:{count:0}},
-                imgSrc:"/src/images/7.gif",
+                imgSrc:"/src/images/nav_animal.jpg",
                 tabbarMsg:"动物"},
             {
                 href:{path:"/plant",params:{count:0}},
-                imgSrc:"/src/images/25.gif",
+                imgSrc:"/src/images/nav_plant.jpg",
                 tabbarMsg:"植物"},
             {
                 href:{path:"/human",params:{count:0}},
-                imgSrc:"/src/images/23.gif",
+                imgSrc:"/src/images/nav_human.jpg",
                 tabbarMsg:"人类"}
         ]
     }

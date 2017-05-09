@@ -23,7 +23,6 @@ var voltage={
     },
     single_xtemp=[.2,.4,.6,.8,1],
     single_ytemp=['.05', '.1', 15,  '.1', '.05'];
-var chart_end=100;
 
 function tempX(aArr,bArr,percentArr) {
     var arr=[],brr=[];
@@ -42,10 +41,21 @@ function tempX(aArr,bArr,percentArr) {
     }
 }
 
-function powerArr(){
+/**
+ * type  1表示是频率实验,无表示电压实验
+ * @param type
+ * @returns {Array}
+ */
+function powerArr(type){
     var a=[],b=0.1;
-    for(b;b<=1.5;b+=0.02){
-        a[a.length]=b.toFixed(2)
+    if(type==1){
+        for(var i=1;i<=30;i++){
+            a.push(i)
+        }
+    }else{
+        for(b;b<=1.5;b+=0.02){
+            a[a.length]=b.toFixed(2)
+        }
     }
     return a;
 }
@@ -257,11 +267,12 @@ export default{
     data(){
         return{
             myChart:'',
-            show:true,
+            show:false,
             addUp:false,
             addAuto:"",
+            powerInput:"",//强度选则显示
             isSeries:false,
-            stimulatioStyle:"1",
+            stimulatioStyle:"1",//实验方法 1电压,2频率
             stimulatioImpu:'1',
             experStyle:[
                 {
@@ -293,8 +304,14 @@ export default{
             single_ydata:[],
             single_xdata:[],
             single_count:0,
-            powerChoose: {
+            powerChoose: {//电压实验时强度选择
                 values: powerArr(),
+                select:0,
+                series_text:"自动强度刺激",
+                intervalNum:""
+            },
+            powerChoose2: {//频率实验时强度选择
+                values: powerArr(1),
                 select:0,
                 series_text:"自动强度刺激",
                 intervalNum:""
@@ -306,9 +323,9 @@ export default{
     },
     methods:{
         longPress() {
-            var timer="",btn=$("#powerAdd,#powerSub"),_this=this,type=-1;
+            var timer="",btn=$("#powerAdd,#powerSub,#powerAdd2,#powerSub2"),_this=this,type=-1;
             btn.on('touchstart',function (e) {
-                type=e.target.id=='powerAdd'?1:-1;
+                type=e.target.id.indexOf("A")>0?1:-1;
                 timer=setInterval(function () {
                     _this.onValuesChange(type)
                 },100)
@@ -319,6 +336,7 @@ export default{
         },
         onValuesChange(type){
             var obj=this.powerChoose;
+            if(this.stimulatioStyle=="2")obj=this.powerChoose2;
             if(type>0){
                 if(obj.select>obj.values.length-2){
                     obj.select=obj.values.length-1
@@ -355,8 +373,6 @@ export default{
                 this.single_ydata=transform_ydata(single_ytemp,obj.values[obj.select])
                 // this.single_ydata=[0,5,10,15,20,25,30]
                 this.single_xdata=single_xtemp
-                console.log(this.single_ydata)
-                console.log(this.single_xdata)
             }else{//自动刺激的时候,波形累加
                 this.single_count+=1;
                 this.single_ydata=this.single_ydata.concat(transform_ydata(single_ytemp,obj.values[obj.select]))
@@ -384,7 +400,8 @@ export default{
             }
         },
         experMethod(){
-            this.stimulatioImpu=this.stimulatioStyle=='1'?'1':'3';this.addAuto=false;
+            this.stimulatioImpu=this.stimulatioStyle=='1'?'1':'3';
+            this.addAuto=false;
             this.powerChoose.series_text='自动强度刺激'
             clearInterval(this.powerChoose.intervalNum)
         },
