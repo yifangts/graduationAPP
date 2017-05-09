@@ -10,6 +10,7 @@ var voltage={
         xData:Xarray,
         tip:['收缩力'],
         color:"rgb(219,50,51)",
+        chart_end:100,
         yData:createY(Xarray,[ '1.2', '1.3', 15,  '1.3', '1.2'],1.38)
     },
     frequency={
@@ -17,10 +18,12 @@ var voltage={
         xData:[1,2,3,4,5,6,7,8,9,10,11,12],
         tip:['收缩力'],
         color:"rgb(0,136,212)",
+        chart_end:100,
         yData:[1, 1.5, 8, 10, 11, 11.5, 11.7, 11.8, 11.2, 6, 2, 1]
     },
     single_xtemp=[.2,.4,.6,.8,1],
-    single_ytemp=[ '.05', '.1', 15,  '.1', '.05'];
+    single_ytemp=['.05', '.1', 15,  '.1', '.05'];
+var chart_end=100;
 
 function tempX(aArr,bArr,percentArr) {
     var arr=[],brr=[];
@@ -117,6 +120,8 @@ function createY(Xarr,Yarr,max) {
 
 function chart(obj_id,obj){
     obj.color=obj.color||"rgb(219,50,51)";
+    obj.chart_end=500/obj.yData.length;
+    obj.chart_end=obj.chart_end>30?obj.chart_end:30;
     echarts.init(document.getElementById(obj_id)).setOption(
         {
             backgroundColor: '#394056',
@@ -154,7 +159,7 @@ function chart(obj_id,obj){
                     show: true,
                     realtime: true,
                     start: 0,
-                    end: 20,
+                    end: obj.chart_end||100,
 
                     // x:10,
                     // y:180,
@@ -344,9 +349,19 @@ export default{
             if(this.single_count==0){
                 this.single_xdata=[];
             }
-            this.single_count+=1;
-            this.single_ydata=this.single_ydata.concat(transform_ydata(single_ytemp,obj.values[obj.select]))
-            this.single_xdata=this.single_xdata.concat(single_xtemp)
+            //电压单刺激的时候,每次只有一个波形,并且波形不累加
+            if(type==0&&this.stimulatioStyle=="1"){
+                this.single_count=1
+                this.single_ydata=transform_ydata(single_ytemp,obj.values[obj.select])
+                // this.single_ydata=[0,5,10,15,20,25,30]
+                this.single_xdata=single_xtemp
+                console.log(this.single_ydata)
+                console.log(this.single_xdata)
+            }else{//自动刺激的时候,波形累加
+                this.single_count+=1;
+                this.single_ydata=this.single_ydata.concat(transform_ydata(single_ytemp,obj.values[obj.select]))
+                this.single_xdata=this.single_xdata.concat(single_xtemp)
+            }
             voltage.yData=this.single_ydata
             voltage.xData=this.single_xdata
             chart('main',voltage)
