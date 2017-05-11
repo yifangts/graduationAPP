@@ -74,9 +74,7 @@
         mounted(){
 		    this.$http.jsonp('http://op.juhe.cn/onebox/news/query',obj).then(function (res) {
 
-                console.log(res)
             })
-            console.log(1)
         },
 //        components:{
 //            "my-panel":newsPanel

@@ -41,7 +41,6 @@ function frequency_data(value) {
             xData.push(value-1+"."+i+j+'Hz')
         }
     }
-    // console.log(xData)
     var yData;
     switch (value){
         case 1:
@@ -181,10 +180,16 @@ function newArr(arr) {
         newA=arr2.map((j)=>Number((j/1.1).toFixed(2)))
         arr2=newA;
     }
-    console.log(newA)
-    console.log(newA.sort((a,b)=>{return a>b?-1:1}))
-    // return newA
+    return newA
 }
+
+/**
+ * 从小递增模板
+ * @param aArr
+ * @param bArr
+ * @param percentArr
+ * @returns {{Num: Array, Str: Array}}
+ */
 function tempX(aArr,bArr,percentArr) {
     var arr=[],brr=[];
     for(var i=0;i<aArr.length;i++){
@@ -194,8 +199,6 @@ function tempX(aArr,bArr,percentArr) {
         }
 
     }
-       // console.log('arr',arr)
-       // console.log('brr',brr)
     return{
         Num:arr,
         Str:brr
@@ -305,7 +308,6 @@ function chart(obj_id,obj){
         obj.chart_end=500/obj.yData.length;
         obj.chart_end=obj.chart_end>30?obj.chart_end:30;
     }
-    console.log(1/(obj.yData.length/100)*50)
     echarts.init(document.getElementById(obj_id)).setOption(
         {
             backgroundColor: '#394056',
@@ -510,10 +512,12 @@ export default{
         longPress() {
             var timer="",btn=$("#powerAdd,#powerSub,#powerAdd2,#powerSub2"),_this=this,type=-1;
             btn.on('touchstart',function (e) {
+                var delay=100;
+                if(this.stimulatioStyle==2)delay=200
                 type=e.target.id.indexOf("A")>0?1:-1;
                 timer=setInterval(function () {
                     _this.onValuesChange(type)
-                },200)
+                },delay)
             })
             btn.on("touchend",function () {
                 clearInterval(timer)
