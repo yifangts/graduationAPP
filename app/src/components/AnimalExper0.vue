@@ -37,20 +37,24 @@
                 <div class="cell__bd">强度选择</div>
                 <div class="cell__ft powerCtrl">
                     <!--电压实验+-->
-                    <button v-if="stimulatioStyle=='1'"  id="powerSub" class='primary' @click="onValuesChange(-1)" >减少</button>
+                    <button v-if="stimulatioStyle=='1'"  id="powerSub" class='primary' @click.prevent="onValuesChange(-1)" >减少</button>
                     <input v-if="stimulatioStyle=='1'"  type="text" :value='powerChoose.values[powerChoose.select]+"V"' readonly>
-                    <button v-if="stimulatioStyle=='1'"  id=powerAdd class='primary' @click="onValuesChange(1)"  >增加</button>
+                    <button v-if="stimulatioStyle=='1'"  id=powerAdd class='primary' @click.prevent="onValuesChange(1)"  >增加</button>
                     <!--频率实验-->
-                    <button v-if="stimulatioStyle=='2'" id="powerSub2" class='primary' @click="onValuesChange(-1)" >减少</button>
+                    <button v-if="stimulatioStyle=='2'" id="powerSub2" class='primary' @click.prevent="onValuesChange(-1)" >减少</button>
                     <input v-if="stimulatioStyle=='2'" type="text" :value='powerChoose2.values[powerChoose2.select]+"Hz"' readonly>
-                    <button v-if="stimulatioStyle=='2'" id=powerAdd2 class='primary' @click="onValuesChange(1)"  >增加</button>
+                    <button v-if="stimulatioStyle=='2'" id=powerAdd2 class='primary' @click.prevent="onValuesChange(1)"  >增加</button>
                 </div>
             </div>
+            <!--电压实验-->
             <button v-if="stimulatioStyle=='1'" class="btn_single" @click="single_ciji(0);">单刺激</button>
             <button v-if="stimulatioStyle=='1'" class="btn_series" @click="series_ciji();" v-text='this.powerChoose.series_text'></button>
-            <mt-button v-if="stimulatioStyle=='2'||stimulatioStyle=='3'" class="primary" @click="vue_charts();">启动</mt-button>
-        </div>
+            <!--频率实验-->
+            <button v-if="stimulatioStyle=='2'||stimulatioStyle=='3'" class="btn_single" @click="vue_charts(0)">单刺激</button>
+            <button v-if="stimulatioStyle=='2'||stimulatioStyle=='3'" class="btn_series" @click="vue_charts();" v-text='this.powerChoose2.series_text'></button>
 
+            <!--<mt-button v-if="stimulatioStyle=='2'||stimulatioStyle=='3'" class="primary" @click="vue_charts();">启动</mt-button>-->
+        </div>
         <div id="exper">
 
         </div>
