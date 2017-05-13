@@ -1,5 +1,5 @@
 /**
- * Created by Beiing on 2017/4/21.
+ * Created by yifangts on 2017/4/21.
  */
 // var echarts = require('echarts');
 // var $ =require('jquery');
